@@ -3,7 +3,7 @@ import { useState } from 'react'
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import { Grid } from '@mui/material';
 
-const FilterByRegion = ({selectedRegion, setSelectedRegion}) => {
+const FilterByRegion = ({selectedRegion, setSelectedRegion, setCountries}) => {
   const [isActive, setIsActive] = useState(false)
   const options = ["Africa", "America", "Asia", "Europe", "Oceania"]
   return (
@@ -16,9 +16,13 @@ const FilterByRegion = ({selectedRegion, setSelectedRegion}) => {
           <Grid className='filter-by-region-content'>
             {options.map((option) => (
             <Grid 
-            onClick={(e) => {
+            key={option}
+            onClick={ async (e) => {
               setSelectedRegion(option)
               setIsActive(false)
+              const response = await fetch(`https://restcountries.com/v3.1/region/${option}`)
+              const data = await response.json()
+              setCountries(data)
             }}
             className='filter-by-region-item'> 
               {option} 

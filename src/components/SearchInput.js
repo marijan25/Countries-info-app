@@ -50,18 +50,25 @@ const Search = styled('div')(({ theme }) => ({
     },
   }));
 
-const SearchInput = () => {
+const SearchInput = ({setCountries}) => {
+  const handleSearchChange = async (e) =>{
+    if(e.target.value){
+      const response = await fetch(`https://restcountries.com/v3.1/name/${e.target.value}`)
+      const data = await response.json()
+      setCountries(data)
+    }
+  }
   return (
-       <Box>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search for a country..."
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+    <Box>
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+          placeholder="Search for a country..."
+          onChange = {handleSearchChange}
+        />
+      </Search>
     </Box>
   )
 }
