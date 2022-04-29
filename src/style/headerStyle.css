@@ -1,0 +1,28 @@
+.box{
+    border: 0.1px solid gainsboro;
+  }
+  
+  .tool-bar{
+    background-color: white;
+  }
+  
+  .header-title{
+    flex-grow: 1; 
+    color:black;
+    font-size: 160%;
+    font-weight: bold;
+    margin-left: 5%;
+    margin-top: 0.5%;
+  }
+  
+  .button-header{
+    color: black;
+    margin-right: 5%;
+    background-color: white;
+    border: none;
+  }
+  
+  .box-search{
+    margin-left: 4.5%;
+    flex-grow: 1;
+  }
