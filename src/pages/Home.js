@@ -2,7 +2,7 @@ import Header from "../components/Header"
 import SearchInput from "../components/SearchInput"
 import { Box, Grid } from "@mui/material"
 import FilterByRegion from "../components/FilterByRegion"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import '../style/homeStyle.css'
 import Country from "../components/Country"
 import { Row, Col } from "react-bootstrap"
@@ -34,9 +34,9 @@ const Home = () => {
             />
           </Col>
         </Row>
-      <Box className="country-card">
-        <Grid container spacing={{ xs: 2, md: 10 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-          {!noCountriesFound ? (countries.map((country) => 
+        <Box className="country-card">
+          <Grid container spacing={{ xs: 2, md: 10 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            {!noCountriesFound ? (countries.map((country) => 
             <Country
               key={country.name.common}
               flag = {country.flags.png}
@@ -45,9 +45,9 @@ const Home = () => {
               region = {country.region}
               capital = {country.capital}
             />
-          )) : (<Box className="message"><h2>No countries found</h2></Box>)} 
-        </Grid>
-      </Box>
+            )) : (<Box className="message"><h2>No countries found</h2></Box>)} 
+          </Grid>
+        </Box>
       </Grid>
     </Grid>
   )
