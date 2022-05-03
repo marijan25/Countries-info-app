@@ -1,0 +1,94 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.img{
+    width: 100%;
+    height: 10rem;
+    border-radius: 9px 9px 0px 0px;
+}
+
+.app-body{
+  background-color: #fafafa;
+}
+
+.dark-mode-app-body{
+  background-color: hsl(207, 26%, 17%);
+}
+
+.inputs{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-input{
+  margin-left: 5.5%; 
+  margin-bottom: 3%;  
+}
+
+.select-region{
+  margin-right: 3%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  margin-left: 6%;
+}
+
+.country-card{
+  padding: 6%;
+  margin-top: -6%;
+  align-items: center; 
+}
+
+.paper{
+  background-color: white;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.dark-mode-paper{
+  background-color: hsl(209, 23%, 22%);
+  border-radius: 0px 0px 9px 9px;
+}
+
+.name{
+  margin-left: 10%;
+  padding-top: 7%;
+  margin-bottom: 4%;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.dark-mode-name{
+  margin-left: 10%;
+  padding-top: 7%;
+  margin-bottom: 4%;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+}
+
+.country-information{
+  margin-left: 10%;
+  font-size: 14px;
+}
+
+.dark-mode-country-information{
+  margin-left: 10%;
+  font-size: 14px;
+  color: white;
+}
+
+.message{
+  margin-top: 6%;
+  margin-left: 5.5%;
+  margin-bottom: 100%;
+}
+
+.dark-mode-message{
+  margin-top: 6%;
+  margin-left: 5.5%;
+  margin-bottom: 100%;
+  color: white;
+}
