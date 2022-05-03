@@ -1,13 +1,14 @@
-import Header from "../components/Header"
 import SearchInput from "../components/SearchInput"
 import { Box, Grid } from "@mui/material"
 import FilterByRegion from "../components/FilterByRegion"
 import { useEffect, useState } from "react"
 import '../style/homeStyle.css'
-import Country from "../components/Country"
 import { Row, Col } from "react-bootstrap"
 import { getCountries } from "../CountriesService"
+import { lazy, Suspense } from "react"
+import Loading from "../components/Loading"
 
+const Country = lazy(() => import('../components/Country'))
 const Home = () => {
   const loadCountries = () => getCountries().then((country) => setCountries(country))
   const [countries, setCountries] = useState([])
@@ -17,7 +18,6 @@ const Home = () => {
   }, [])
   return (
     <Grid> 
-      <Header />
       <Grid className="app-body">
         <Row className="inputs">
           <Col md={6} className="search-input">
@@ -29,20 +29,22 @@ const Home = () => {
               setSelectedRegion={setSelectedRegion} />
           </Col>
         </Row>
-      <Box className="country-card">
-        <Grid container spacing={{ xs: 2, md: 10 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-          {countries.map((country) => 
-            <Country
-              key={country.name}
-              flag = {country.flags.png}
-              name = {country.name}
-              population = {new Intl.NumberFormat().format(country.population)}
-              region = {country.region}
-              capital = {country.capital}
-            />
-          )}
-        </Grid>
-      </Box>
+        <Suspense fallback={<Loading />}>
+          <Box className="country-card">
+            <Grid container spacing={{ xs: 2, md: 10 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+              {countries.map((country) =>
+                <Country
+                  key={country.name}
+                  flag = {country.flags.png}
+                  name = {country.name}
+                  population = {new Intl.NumberFormat().format(country.population)}
+                  region = {country.region}
+                  capital = {country.capital}
+                />
+              )}
+            </Grid>
+          </Box>
+        </Suspense> 
       </Grid>
     </Grid>
   )

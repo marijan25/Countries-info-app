@@ -4,6 +4,10 @@
     border-radius: 9px 9px 0px 0px;
 }
 
+.loading-message{
+  margin-left: 45%;
+}
+
 .app-body{
   background-color: #fafafa;
 }
