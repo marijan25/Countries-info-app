@@ -33,9 +33,9 @@ const Home = () => {
         <Grid container spacing={{ xs: 2, md: 10 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {countries.map((country) => 
             <Country
-              key={country.name.common}
+              key={country.name}
               flag = {country.flags.png}
-              name = {country.name.common}
+              name = {country.name}
               population = {new Intl.NumberFormat().format(country.population)}
               region = {country.region}
               capital = {country.capital}
