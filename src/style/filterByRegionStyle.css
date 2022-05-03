@@ -13,11 +13,31 @@ body {
     position: relative;
 }
 
+.filter-by-region-content-dark-mode{
+    background-color: hsl(209, 23%, 22%);
+    color: white;
+}
+
+.filter-by-region-dark-mode-item{
+    color: white;
+}
+
 .filter-by-region-btn {
     padding: 12px;
     background: white;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
     color: #333;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.filter-by-region-btn-dark-mode{
+    padding: 12px;
+    background: hsl(209, 23%, 22%);
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+    color: white;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -35,7 +55,24 @@ body {
     width: 100%;
 }
 
+.filter-by-region .filter-by-region-content-dark-mode{
+    position: absolute;
+    top: 110%;
+    left: 0;
+    padding: 15px;
+    background: hsl(209, 23%, 22%);
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+    color: white;
+    width: 100%;
+}
+
 .filter-by-region .filter-by-region-content .filter-by-region-item{
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-by-region .filter-by-region-content-dark-mode .filter-by-region-dark-mode-item{
     padding: 10px;
     cursor: pointer;
     transition: all 0.2s;
@@ -43,4 +80,8 @@ body {
 
 .filter-by-region .filter-by-region-content .filter-by-region-item:hover{
     background: #fcfcfc;
+}
+
+.filter-by-region .filter-by-region-content-dark-mode .filter-by-region-dark-mode-item:hover{
+    background-color: #708690;
 }

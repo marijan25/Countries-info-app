@@ -2,19 +2,14 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-
+import '../style/searchInputStyle.css'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: '9px',
-    backgroundColor: 'white',
-    '&:hover': {
-      backgroundColor: 'white',
-    },
     marginLeft: 0,
     marginTop: 40,
     height: 50,
-    backgroundColor: 'white',
     border: 'none',
     width: '95%',
     [theme.breakpoints.up('sm')]: {
@@ -51,7 +46,7 @@ const Search = styled('div')(({ theme }) => ({
     },
   }));
 
-const SearchInput = ({setCountries}) => {
+const SearchInput = ({setCountries, darkMode}) => {
   const handleSearchChange = async (e) =>{
     if(e.target.value){
       const response = await fetch(`https://restcountries.com/v2/name/${e.target.value}`)
@@ -61,8 +56,8 @@ const SearchInput = ({setCountries}) => {
   }
   return (
     <Box>
-      <Search>
-        <SearchIconWrapper>
+      <Search className={darkMode ? "search-dark-mode" : "search"}>
+        <SearchIconWrapper className={darkMode ? "search-icon" : ""}>
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase

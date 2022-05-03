@@ -1,4 +1,3 @@
-import Header from "../components/Header"
 import SearchInput from "../components/SearchInput"
 import { Box, Grid } from "@mui/material"
 import FilterByRegion from "../components/FilterByRegion"
@@ -8,7 +7,7 @@ import Country from "../components/Country"
 import { Row, Col } from "react-bootstrap"
 import { getCountries } from "../CountriesService"
 
-const Home = () => {
+const Home = ({darkMode}) => {
   const loadCountries = () => getCountries().then((country) => setCountries(country))
   const [countries, setCountries] = useState([])
   const [selectedRegion, setSelectedRegion] = useState("Filter By Region")
@@ -18,12 +17,12 @@ const Home = () => {
   }, [])
   return (
     <Grid> 
-      <Header />
-      <Grid className="app-body" >
+      <Grid className={darkMode ? "dark-mode-app-body" : "app-body"} >
         <Row className="inputs">
           <Col md={6} className="search-input">
             <SearchInput
               setCountries={setCountries}
+              darkMode = {darkMode}
             />
           </Col>
           <Col md={{span:2,offset:2}} className="select-region">
@@ -31,6 +30,7 @@ const Home = () => {
               selectedRegion={selectedRegion} 
               setSelectedRegion={setSelectedRegion} 
               setCountries = {setCountries}
+              darkMode = {darkMode}
             />
           </Col>
         </Row>
@@ -44,8 +44,9 @@ const Home = () => {
               population = {new Intl.NumberFormat().format(country.population)}
               region = {country.region}
               capital = {country.capital}
+              darkMode = {darkMode}
             />
-            )) : (<Box className="message"><h2>No countries found</h2></Box>)} 
+            )) : (<Box className={darkMode ? "dark-mode-message" : "message"}><h2>No countries found</h2></Box>)} 
           </Grid>
         </Box>
       </Grid>
