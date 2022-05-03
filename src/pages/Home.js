@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <Grid> 
       <Header />
-      <Grid className="app-body">
+      <Grid className="app-body" >
         <Row className="inputs">
           <Col md={6} className="search-input">
             <SearchInput
@@ -38,9 +38,9 @@ const Home = () => {
           <Grid container spacing={{ xs: 2, md: 10 }} columns={{ xs: 4, sm: 8, md: 12 }}>
             {!noCountriesFound ? (countries.map((country) => 
             <Country
-              key={country.name.common}
+              key={country.alpha3Code}
               flag = {country.flags.png}
-              name = {country.name.common}
+              name = {country.name}
               population = {new Intl.NumberFormat().format(country.population)}
               region = {country.region}
               capital = {country.capital}

@@ -10,7 +10,7 @@ const Header = () => {
           <label className="header-title">
             Where in the world?
           </label>
-          <button className="button-header"><DarkModeOutlinedIcon sx={{fontSize:18,marginRight:1}}/>Dark mode</button>
+          <button className= "button-header"><DarkModeOutlinedIcon sx={{fontSize:18,marginRight:1}}/>Dark mode</button>
         </Toolbar>
       </Box>
   )
