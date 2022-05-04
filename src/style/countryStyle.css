@@ -84,12 +84,12 @@
 }
 
 .col-right{
-    padding: 18%;
+    padding-top: 18%;
 }
 
 .col-right-dark-mode{
     color: white;
-    padding: 18%;
+    padding-top: 18%;
 }
 
 .border-button{
