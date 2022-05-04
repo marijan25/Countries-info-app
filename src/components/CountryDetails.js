@@ -2,8 +2,19 @@ import { Row,Col } from "react-bootstrap"
 import { Box } from "@mui/material"
 import '../style/countryStyle.css'
 import { Link } from "react-router-dom"
+import { getCountries } from "../CountriesService"
+import { useState, useEffect } from "react"
 
 const CountryDetails = ({flag,name,nativeName,population,region,subregion,capital,topLevelDomain,currencies,languages,borders,darkMode}) => {
+    const [country, setCountry] = useState([])
+    const getCountry = async () => {
+        const response = await fetch(`https://restcountries.com/v2/alpha?codes=${borders}`)
+        const data = await response.json()
+        setCountry(data)
+    }
+    useEffect(() => {
+        getCountry()
+    }, [])
   return (
     <Box>
         <Row xs={1} md={2}>
@@ -41,13 +52,14 @@ const CountryDetails = ({flag,name,nativeName,population,region,subregion,capita
                 <Box className={darkMode ? "border-countries-dark-mode" : "border-countries"}>
                     Border Countries: 
                         {borders ? (
-                            borders.map((border) => (
-                                <Link to={`/home/${border}`}>
+                            country.map((border) => (
+                                <Link to={`/home/${border.name}`}>
                                     <button 
-                                        key={nativeName} 
+                                        key={border.nativeName} 
+                                        onClick={getCountries()}
                                         className={darkMode ? "border-button-dark-mode" : "border-button"}
                                     >
-                                        {border}
+                                        {border.name}
                                     </button>
                                 </Link>
                             ))) : ('No borders')
