@@ -2,26 +2,26 @@ import { Box, Grid, Paper } from "@mui/material"
 import '../style/homeStyle.css'
 import { Link } from "react-router-dom"
 
-const Country = ({name, flag, population, region, capital, darkMode}) => {
+const Country = ({country, darkMode}) => {
   return (
     <Grid item xs={3} sm={4} md={3}>
-      <Link to={`/home/${name}`}> 
+      <Link to={`/home/${country.alpha3Code}`}> 
         <Paper elevation={3} sx={{borderRadius:'9px 9px 9px 9px'}}>
           <Box>
-            <img src={flag} className="img" />
+            <img src={country.flags.png} className="img" />
           </Box>
           <Box className={darkMode ? "dark-mode-paper" : "paper"}>
             <Box className={darkMode ? "dark-mode-name" : "name"}>
-              {name}
+              {country.name}
             </Box>
             <Box className={darkMode ? "dark-mode-country-information" : "country-information"}>
-              Population: {population}
+              Population: {new Intl.NumberFormat().format(country.population)}
             </Box>
             <Box className={darkMode ? "dark-mode-country-information" : "country-information"}>
-              Region: {region}
+              Region: {country.region}
             </Box>
             <Box className={darkMode ? "dark-mode-country-information" : "country-information"}>
-              Capital: {capital}
+              Capital: {country.capital}
             </Box>
             <br /><br />
           </Box>

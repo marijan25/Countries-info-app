@@ -12,44 +12,41 @@ const Home = ({darkMode}) => {
   const [countries, setCountries] = useState([])
   const [selectedRegion, setSelectedRegion] = useState("Filter By Region")
   const noCountriesFound = countries.status || countries.message
+  const loadData = (country) => {
+    setCountries(country)
+  }
   useEffect(() => {
     loadCountries();
   }, [])
   return (
-    <Grid> 
-      <Grid className={darkMode ? "dark-mode-app-body" : "app-body"} >
-        <Row className="inputs">
-          <Col md={6} className="search-input">
-            <SearchInput
-              setCountries={setCountries}
-              darkMode = {darkMode}
-            />
-          </Col>
-          <Col md={{span:2,offset:2}} className="select-region">
-            <FilterByRegion 
-              selectedRegion={selectedRegion} 
-              setSelectedRegion={setSelectedRegion} 
-              setCountries = {setCountries}
-              darkMode = {darkMode}
-            />
-          </Col>
-        </Row>
-        <Box className="country-card">
-          <Grid container spacing={{ xs: 2, md: 10 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-            {!noCountriesFound ? (countries.map((country) => 
-            <Country
-              key={country.alpha3Code}
-              flag = {country.flags.png}
-              name = {country.name}
-              population = {new Intl.NumberFormat().format(country.population)}
-              region = {country.region}
-              capital = {country.capital}
-              darkMode = {darkMode}
-            />
-            )) : (<Box className={darkMode ? "dark-mode-message" : "message"}><h2>No countries found</h2></Box>)} 
-          </Grid>
-        </Box>
-      </Grid>
+    <Grid className={darkMode ? "dark-mode-app-body" : "app-body"} >
+      <Row className="inputs">
+        <Col md={6} className="search-input">
+          <SearchInput
+            loadData = {loadData}
+            darkMode = {darkMode}
+          />
+        </Col>
+        <Col md={{span:2,offset:2}} className="select-region">
+          <FilterByRegion 
+            selectedRegion={selectedRegion} 
+            setSelectedRegion={setSelectedRegion} 
+            loadData = {loadData}
+            darkMode = {darkMode}
+          />
+        </Col>
+      </Row>
+      <Box className="country-card">
+        <Grid container spacing={{ xs: 2, md: 10 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+          {!noCountriesFound ? (countries.map((country) => 
+          <Country
+            key={country.alpha3Code}
+            country = {country}
+            darkMode = {darkMode}
+          />
+          )) : (<Box className={darkMode ? "dark-mode-message" : "message"}><h2>No countries found</h2></Box>)} 
+        </Grid>
+      </Box>
     </Grid>
   )
 }

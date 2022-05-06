@@ -1,65 +1,53 @@
 import { Row,Col } from "react-bootstrap"
-import { Box } from "@mui/material"
+import { Box, Grid } from "@mui/material"
 import '../style/countryStyle.css'
 import { Link } from "react-router-dom"
-import { getCountries } from "../CountriesService"
-import { useState, useEffect } from "react"
+import { getSelectedBorder, getSelectedCountry } from "../CountriesService"
 
-const CountryDetails = ({flag,name,nativeName,population,region,subregion,capital,topLevelDomain,currencies,languages,borders,darkMode}) => {
-    const [country, setCountry] = useState([])
-    const getCountry = async () => {
-        const response = await fetch(`https://restcountries.com/v2/alpha?codes=${borders}`)
-        const data = await response.json()
-        setCountry(data)
-    }
-    useEffect(() => {
-        getCountry()
-    }, [])
+const CountryDetails = ({selectedCountry,darkMode,loadData}) => {
   return (
-    <Box>
         <Row xs={1} md={2}>
             <Col>
-                <img className="country-image" src={flag} />
+                <img className="country-image" src={selectedCountry.flag} />
             </Col>
             <Col>
                 <Row xs={1} md={2} className={darkMode ? "row-dark-mode" : "row"}>
                     <Col className={darkMode ? "col-left-dark-mode" : "col-left"}>
-                        <Box className="country-name">{name}</Box>
-                        <Box >Native Name: {nativeName} </Box> 
-                        <Box >Population: {population}</Box>
-                        <Box >Region: {region}</Box>
-                        <Box >Sub Region: {subregion}</Box>
-                        <Box >Capital: {capital ? (capital) : ("No capital city")}</Box>
+                        <Box className="country-name">{selectedCountry.name}</Box>
+                        <Box >Native Name: {selectedCountry.nativeName} </Box> 
+                        <Box >Population: {new Intl.NumberFormat().format(selectedCountry.population)}</Box>
+                        <Box >Region: {selectedCountry.region}</Box>
+                        <Box >Sub Region: {selectedCountry.subregion}</Box>
+                        <Box >Capital: {selectedCountry.capital ? (selectedCountry.capital) : ("No capital city")}</Box>
                     </Col>
                     <Col className={darkMode ? "col-right-dark-mode" : "col-right"}>
-                        <Box>Top level Domain: {topLevelDomain} </Box>
-                        <Box>Currencies: 
-                            {currencies ? (currencies.map((currency) => (
-                                <>
+                        <Box>Top level Domain: {selectedCountry.topLevelDomain} </Box>
+                        <Grid container>Currencies: 
+                            {selectedCountry.currencies ? (selectedCountry.currencies.map((currency) => (
+                                <Box key={currency.name}>
                                     {currency.name}
-                                </>
+                                </Box>
                             ))) : ("No currencies")}
-                        </Box>
-                        <Box>Languages:  
-                            {languages ? (languages.map((language) => (
-                            <>
+                        </Grid>
+                        <Grid container>Languages:  
+                            {selectedCountry.languages ? (selectedCountry.languages.map((language) => (
+                            <Box key={language.name}>
                                 {language.name},
-                            </>
+                            </Box>
                             ))) : ("No languages")}
-                        </Box>
+                        </Grid>
                     </Col>
                 </Row>
                 <Box className={darkMode ? "border-countries-dark-mode" : "border-countries"}>
                     Border Countries: 
-                        {borders ? (
-                            country.map((border) => (
-                                <Link to={`/home/${border.name}`}>
+                        {selectedCountry.borders ? (
+                            selectedCountry.borders.map((border) => (
+                                <Link to={`/home/${border}`} key={border}>
                                     <button 
-                                        key={border.nativeName} 
-                                        onClick={getCountries()}
+                                        onClick={() => getSelectedCountry(border).then(loadData)}
                                         className={darkMode ? "border-button-dark-mode" : "border-button"}
                                     >
-                                        {border.name}
+                                        {border}
                                     </button>
                                 </Link>
                             ))) : ('No borders')
@@ -67,7 +55,6 @@ const CountryDetails = ({flag,name,nativeName,population,region,subregion,capita
                 </Box>
             </Col>
         </Row>
-    </Box>
   )
 }
 

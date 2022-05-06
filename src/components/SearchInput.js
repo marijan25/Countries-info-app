@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import '../style/searchInputStyle.css'
+import { getCountriesName } from '../CountriesService';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -46,16 +47,13 @@ const Search = styled('div')(({ theme }) => ({
     },
   }));
 
-const SearchInput = ({setCountries, darkMode}) => {
-  const handleSearchChange = async (e) =>{
+const SearchInput = ({loadData, darkMode}) => {
+  const handleSearchChange = (e) => {
     if(e.target.value){
-      const response = await fetch(`https://restcountries.com/v2/name/${e.target.value}`)
-      const data = await response.json()
-      setCountries(data)
-    }
+      getCountriesName(e.target.value).then(loadData)
+    }  
   }
   return (
-    <Box>
       <Search className={darkMode ? "search-dark-mode" : "search"}>
         <SearchIconWrapper className={darkMode ? "search-icon" : ""}>
           <SearchIcon />
@@ -65,7 +63,6 @@ const SearchInput = ({setCountries, darkMode}) => {
           onChange = {handleSearchChange}
         />
       </Search>
-    </Box>
   )
 }
 

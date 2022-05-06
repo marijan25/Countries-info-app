@@ -15,7 +15,7 @@ function App() {
       <Header switchMode={switchMode} darkMode={darkMode}/>
       <Routes>
         <Route exact path="/" element={<Home darkMode={darkMode} />}> </Route>
-        <Route path={"/home/:name"} element={<CountryPage darkMode={darkMode} />}> </Route>
+        <Route path={"/home/:code"} element={<CountryPage darkMode={darkMode} />}> </Route>
      </Routes>
     </BrowserRouter>
   );
