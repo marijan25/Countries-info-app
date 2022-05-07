@@ -11,7 +11,7 @@ const FilterByRegion = ({selectedRegion, setSelectedRegion, loadData, darkMode})
     <Grid className='filter-by-region'>
         <Grid className={darkMode ? 'filter-by-region-btn-dark-mode' : 'filter-by-region-btn'} onClick={(e) => setIsActive(!isActive)}>
           {selectedRegion}
-          <ArrowDropDownOutlinedIcon />
+          <ArrowDropDownOutlinedIcon/>
         </Grid> 
         {isActive && (
           <Grid className={darkMode ? 'filter-by-region-content-dark-mode' : 'filter-by-region-content'}>

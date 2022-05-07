@@ -12,7 +12,7 @@ const Search = styled('div')(({ theme }) => ({
     marginTop: 40,
     height: 50,
     border: 'none',
-    width: '95%',
+    width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: '60ch',
@@ -55,13 +55,12 @@ const SearchInput = ({loadData, darkMode}) => {
   }
   return (
       <Search className={darkMode ? "search-dark-mode" : "search"}>
-        <SearchIconWrapper className={darkMode ? "search-icon" : ""}>
+        <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
           placeholder="Search for a country..."
-          onChange = {handleSearchChange}
-        />
+          onChange = {handleSearchChange}/>
       </Search>
   )
 }

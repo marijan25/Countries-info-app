@@ -4,11 +4,10 @@ import { Link } from "react-router-dom"
 
 const Country = ({country, darkMode}) => {
   return (
-    <Grid item xs={3} sm={4} md={3}>
+    <Box className={darkMode ? "dark-mode-country" : "country"}>
       <Link to={`/home/${country.alpha3Code}`}> 
-        <Paper elevation={3} sx={{borderRadius:'9px 9px 9px 9px'}}>
-          <Box>
-            <img src={country.flags.png} className="img" />
+          <Box className="flag-container">
+            <img src={country.flags.png} />
           </Box>
           <Box className={darkMode ? "dark-mode-paper" : "paper"}>
             <Box className={darkMode ? "dark-mode-name" : "name"}>
@@ -23,11 +22,9 @@ const Country = ({country, darkMode}) => {
             <Box className={darkMode ? "dark-mode-country-information" : "country-information"}>
               Capital: {country.capital}
             </Box>
-            <br /><br />
           </Box>
-        </Paper>
       </Link>
-    </Grid>
+    </Box>
   )
 }
 
