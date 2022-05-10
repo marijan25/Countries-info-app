@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 2px;
   cursor: pointer;
   user-select: none;
   border: none;
@@ -57,11 +57,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 2px;
   cursor: pointer;
   user-select: none;
   border: none;
   background-color: hsl(209, 23%, 22%);
   color: white;
   margin-right: 3%;
+}
+
+@media (max-width: 400px) {
+  .dark-mode-button-header{
+    gap: 0.5px;
+  }
+  .button-header{
+    gap: 0.5px;
+  }
 }

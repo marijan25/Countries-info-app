@@ -14,13 +14,13 @@ const Country = ({country, darkMode}) => {
               {country.name}
             </Box>
             <Box className={darkMode ? "dark-mode-country-information" : "country-information"}>
-              Population: {new Intl.NumberFormat().format(country.population)}
+             <span className={darkMode ? "dark-mode-info" : "info"}>Population:</span> <span className={darkMode ? "dark-mode-value" : "value"}> {new Intl.NumberFormat().format(country.population)} </span>
             </Box>
             <Box className={darkMode ? "dark-mode-country-information" : "country-information"}>
-              Region: {country.region}
+              <span className={darkMode ? "dark-mode-info" : "info"}>Region:</span> <span className={darkMode ? "dark-mode-value" : "value"}>{country.region}</span>
             </Box>
             <Box className={darkMode ? "dark-mode-country-information" : "country-information"}>
-              Capital: {country.capital}
+              <span className={darkMode ? "dark-mode-info" : "info"}>Capital:</span> <span className={darkMode ? "dark-mode-value" : "value"}>{country.capital}</span>
             </Box>
           </Box>
       </Link>

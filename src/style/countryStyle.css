@@ -43,11 +43,11 @@
 }
 
 .btn-position{
-    padding: 0.01%;
+    padding-left: 6%;
 }
 
 .btn-position-dark-mode{
-    padding: 0.01%;
+    padding-left: 6%;
 }
 
 .row{
@@ -64,8 +64,8 @@
     width: 100%;
     height: 35rem;
     padding-top: 12%;
-    padding-left: 3.5%;
-    padding-right: 3.5%;
+    padding-left:16%;
+    padding-right: 12%;
     margin-top: -4%;
 }
 
@@ -92,13 +92,20 @@
     padding-top: 18%;
 }
 
+.value{
+    color: gray;
+}
+
+.dark-mode-value{
+    color: #bdbdbd;
+}
+
 .border-button{
     background-color: white;
     border: 2px solid #e7e7e7;
-    width: 135px;
+    width: 100px;
     font-size: 12px;
     margin-right: 1%;
-    margin-left: 1%;
     margin-bottom: 1%;
     border-radius: 3px;   
 }
@@ -107,12 +114,11 @@
     background-color: hsl(209, 23%, 22%);
     border: 2px solid hsl(207, 26%, 17%);
     color: white;
-    width: 135px;
+    width: 100px;
     font-size: 12px;
     margin-right: 1%;
-    margin-left: 1%;
     margin-bottom: 1%;
-    border-radius: 3px;
+    border-radius: 3px; 
 }
 
 .border-button-dark-mode:hover{
@@ -132,4 +138,84 @@
     margin-bottom: 100%;
     color: white;
     margin-left: 3%;
+}
+
+@media (max-width: 400px) {
+    .country-name{
+        padding-left: 4%;
+    }
+    .btn-position{
+        padding-top: 7%;
+        padding-bottom: 8%;
+    }
+    .btn-position-dark-mode{
+        padding-top: 7%;
+        padding-bottom: 8%;
+    }
+    .col-right{
+        margin-top: -9%;
+    }
+    .col-right-dark-mode{
+        margin-top: -9%;
+    }
+    .country-info{
+        padding-left: 4%;
+        padding-top: 3.5%;
+    }
+    .country-image{
+        width: 110%;
+        height: 20rem; 
+        margin-left: -8%;
+    }
+    p {
+        display: flex;
+        flex-direction: column;
+        padding-left: 3.5%;
+        padding-top: 8.5%;
+      }
+  }
+
+  @media (min-width: 401px) {
+    .country-image{
+        width: 100%;
+        height: 30rem; 
+        margin-left: -8%;
+    }
+    .country-name{
+        padding-left: 4%;
+    }
+    .country-info{
+        padding-left: 4%;
+        padding-top: 3.5%;
+    }
+    .col-right{
+        margin-top: -13%;
+    }
+    .border-countries{
+        padding-left: 3.5%;
+        padding-top: 8.5%;
+    }
+    .border-countries-dark-mode{
+        padding-left: 3.5%;
+        padding-top: 8.5%;
+    }
+}
+  
+  @media (min-width: 768px) {
+    .country-image{
+        padding-right: 0;
+        height: 30rem;
+        margin-left: 0%;  
+    }
+    .col-right{
+        margin-top: 0%;
+    }
+    .border-countries{
+        margin-left: 1.5%;
+        margin-top: -2%;
+    }
+    .border-countries-dark-mode{
+        margin-left: 1.5%;
+        margin-top: -2%;
+    }
 }

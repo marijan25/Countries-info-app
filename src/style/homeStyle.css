@@ -66,12 +66,12 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 35px;
+  gap: 60px;
 }
 
 .country{
   background-color: white;
-  width: 305px;
+  width: 285px;
   border-radius: 9px;
   height: 350px;
   cursor: pointer;
@@ -80,7 +80,7 @@
 
 .dark-mode-country{
   background-color: hsl(209, 23%, 22%);
-  width: 305px;
+  width: 285px;
   border-radius: 9px;
   height: 350px;
   cursor: pointer;
@@ -160,6 +160,10 @@
   margin-left: 5.5%;
   margin-bottom: 100%;
   color: white;
+}
+
+.info{
+  color: black;
 }
 
 @media (min-width: 640px) {

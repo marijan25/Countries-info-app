@@ -19,7 +19,7 @@ const CountryPage = ({ darkMode }) => {
     return (
         <Box className={darkMode ? "body-dark-mode" : ""}>
             <Link to="/">
-            <Box className={darkMode ? "btn-postion-dark-mode" : "btn-position"}>
+            <Box className={darkMode ? "btn-position-dark-mode" : "btn-position"}>
             <button className={darkMode ? "btn-back-dark-mode" : "btn-back"}>
               <Box className="text-button">
                   <ArrowBackIcon /> Back

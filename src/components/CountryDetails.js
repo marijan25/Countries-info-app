@@ -14,32 +14,33 @@ const CountryDetails = ({selectedCountry,darkMode,loadData}) => {
                 <Row xs={1} md={2} className={darkMode ? "row-dark-mode" : "row"}>
                     <Col className={darkMode ? "col-left-dark-mode" : "col-left"}>
                         <Box className="country-name">{selectedCountry.name}</Box>
-                        <Box >Native Name: {selectedCountry.nativeName} </Box> 
-                        <Box >Population: {new Intl.NumberFormat().format(selectedCountry.population)}</Box>
-                        <Box >Region: {selectedCountry.region}</Box>
-                        <Box >Sub Region: {selectedCountry.subregion}</Box>
-                        <Box >Capital: {selectedCountry.capital ? (selectedCountry.capital) : ("No capital city")}</Box>
+                        <Box className="country-info">Native Name: <span className={darkMode ? "dark-mode-value" : "value"}>{selectedCountry.nativeName}</span> </Box> 
+                        <Box className="country-info">Population: <span className={darkMode ? "dark-mode-value" : "value"}>{new Intl.NumberFormat().format(selectedCountry.population)}</span></Box>
+                        <Box className="country-info">Region: <span className={darkMode ? "dark-mode-value" : "value"}>{selectedCountry.region}</span></Box>
+                        <Box className="country-info">Sub Region: <span className={darkMode ? "dark-mode-value" : "value"}>{selectedCountry.subregion}</span></Box>
+                        <Box className="country-info">Capital: <span className={darkMode ? "dark-mode-value" : "value"}>{selectedCountry.capital ? (selectedCountry.capital) : ("No capital city")}</span></Box>
                     </Col>
                     <Col className={darkMode ? "col-right-dark-mode" : "col-right"}>
-                        <Box>Top level Domain: {selectedCountry.topLevelDomain} </Box>
-                        <Grid container>Currencies: 
+                        <Box className="country-info">Top level Domain: <span className={darkMode ? "dark-mode-value" : "value"}>{selectedCountry.topLevelDomain}</span></Box>
+                        <Grid container className="country-info">Currencies:
                             {selectedCountry.currencies ? (selectedCountry.currencies.map((currency) => (
                                 <Box key={currency.name}>
-                                    {currency.name}
+                                    <span className={darkMode ? "dark-mode-value" : "value"}>{currency.name}</span>
                                 </Box>
                             ))) : ("No currencies")}
                         </Grid>
-                        <Grid container>Languages:  
+                        <Grid className="country-info" container>Languages: 
                             {selectedCountry.languages ? (selectedCountry.languages.map((language) => (
                             <Box key={language.name}>
-                                {language.name},
+                                <span className={darkMode ? "dark-mode-value" : "value"}>{language.name},</span>
                             </Box>
                             ))) : ("No languages")}
                         </Grid>
                     </Col>
                 </Row>
                 <Box className={darkMode ? "border-countries-dark-mode" : "border-countries"}>
-                    Border Countries: 
+                    <p>Border Countries:{(' ')}
+                        <span>
                         {selectedCountry.borders ? (
                             selectedCountry.borders.map((border) => (
                                 <Link to={`/home/${border}`} key={border}>
@@ -47,11 +48,13 @@ const CountryDetails = ({selectedCountry,darkMode,loadData}) => {
                                         onClick={() => getSelectedCountry(border).then(loadData)}
                                         className={darkMode ? "border-button-dark-mode" : "border-button"}
                                     >
-                                        {border}
+                                        <span className={darkMode ? "dark-mode-value" : "value"}>{border}</span>
                                     </button>
                                 </Link>
-                            ))) : ('No borders')
+                            ))) : <span className={darkMode ? "dark-mode-value" : "value"}>No borders</span>
                         }
+                        </span>
+                    </p>
                 </Box>
             </Col>
         </Row>
