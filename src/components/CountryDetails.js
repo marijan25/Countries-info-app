@@ -2,7 +2,8 @@ import { Row,Col } from "react-bootstrap"
 import { Box, Grid } from "@mui/material"
 import '../style/countryStyle.css'
 import { Link } from "react-router-dom"
-import { getSelectedBorder, getSelectedCountry } from "../CountriesService"
+import { getSelectedCountry } from "../CountriesService"
+import { ViberShareButton, ViberIcon, WhatsappShareButton, WhatsappIcon, FacebookMessengerShareButton, FacebookIcon, FacebookMessengerIcon } from "react-share"
 
 const CountryDetails = ({selectedCountry,darkMode,loadData}) => {
   return (
@@ -27,7 +28,7 @@ const CountryDetails = ({selectedCountry,darkMode,loadData}) => {
                                 <Box key={currency.name}>
                                     <span className={darkMode ? "dark-mode-value" : "value"}>{currency.name}</span>
                                 </Box>
-                            ))) : ("No currencies")}
+                            ))) : <span className={darkMode ? "dark-mode-value" : "value"}>No currencies</span>}
                         </Grid>
                         <Grid className="country-info" container>Languages: 
                             {selectedCountry.languages ? (selectedCountry.languages.map((language) => (
@@ -35,6 +36,24 @@ const CountryDetails = ({selectedCountry,darkMode,loadData}) => {
                                 <span className={darkMode ? "dark-mode-value" : "value"}>{language.name},</span>
                             </Box>
                             ))) : ("No languages")}
+                        </Grid>
+                        <Grid container className="social-media">
+                            Share:
+                            <Box className="social-media-icon">
+                                <ViberShareButton title={`Link to country: ${selectedCountry.name}`} url={`http://localhost:3000/home/${selectedCountry.alpha3Code}`}>
+                                    <ViberIcon size={22} round={true}/>
+                                </ViberShareButton>
+                            </Box>
+                            <Box className="social-media-icon">
+                                <WhatsappShareButton title={`Link to country: ${selectedCountry.name}`} url={`http://localhost:3000/home/${selectedCountry.alpha3Code}`}>
+                                    <WhatsappIcon size={22} round={true}/>
+                                </WhatsappShareButton>
+                            </Box>
+                            <Box className="social-media-icon">
+                                <FacebookMessengerShareButton url={`http://localhost:3000/home/${selectedCountry.alpha3Code}`}>
+                                    <FacebookMessengerIcon size={22} round={true}/>
+                                </FacebookMessengerShareButton>
+                            </Box>
                         </Grid>
                     </Col>
                 </Row>

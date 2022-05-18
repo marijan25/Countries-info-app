@@ -166,9 +166,51 @@
   color: black;
 }
 
+.loading{
+  text-align: center;
+  animation-name: loading;
+  animation-duration: 4s;
+}
+
+.progress-circle{
+  margin-left: 33%;
+  animation-name: circle;
+  animation-duration: 4s;
+  padding-top: 8%;
+  padding-bottom: 8%;
+}
+
+.content{
+  text-align: center;
+  font-size: 16px;
+  margin-top: 5%;
+}
+
+@keyframes circle{
+  0% {color: green;}
+}
+
+@keyframes loading {
+  0% {color: black;}
+  50% {color: green;}
+}
+
+.loading-dark-mode{
+  text-align: center;
+  color: bisque;
+}
+
 @media (min-width: 640px) {
   .country {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .progress-circle{
+    margin-left: 45%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+  }
+  .content{
+    font-size: 24px;
   }
 }
 
@@ -188,6 +230,12 @@
   .country {
     grid-template-columns: repeat(3, 1fr);
   }
+  .progress-circle{
+    margin-left: 45%;
+  }
+  .content{
+    font-size: 24px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -197,5 +245,11 @@
   .country {
     grid-template-columns: repeat(4, 1fr);
     gap: 60px;
+  }
+  .progress-circle{
+    margin-left: 45%;
+  }
+  .content{
+    font-size: 24px;
   }
 }
