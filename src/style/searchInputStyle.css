@@ -1,0 +1,14 @@
+.search{
+    background-color: white;
+}
+
+.search-dark-mode{
+    background-color: hsl(209, 23%, 22%);
+    color: white;
+}
+
+.search-icon{
+    color: black;
+    background-color: black;
+}
+

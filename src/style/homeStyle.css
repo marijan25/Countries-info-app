@@ -1,0 +1,255 @@
+*{
+  margin: 0%;
+  padding: 0%; 
+}
+
+.inputs{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inputs .search-input{
+  width: 100%;
+  margin: -30px 0px 30px;  
+}
+
+.inputs .search-input input{
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  width: 100%;
+}
+
+.inputs .select-region {
+  width: 100%;
+  margin: 0px 0px 30px; 
+}
+
+.select-region {
+  margin-right: 2.5%;
+  padding-left: 0%;
+  
+}
+
+.app{
+  background-color: #fafafa;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.dark-mode-app{
+  background-color: hsl(207, 26%, 17%);
+  min-height: 100vh;
+  height: 100%;
+}
+
+.dark-mode-app-body{
+  margin: 0px auto 0;
+  padding: 15px;
+  max-width: 1400px;
+}
+
+.app-body{
+  margin: 0px auto 0;
+  padding: 15px;
+  max-width: 1400px;
+}
+
+.country-card{
+  max-width: 1400px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.country{
+  background-color: white;
+  width: 285px;
+  border-radius: 9px;
+  height: 350px;
+  cursor: pointer;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.02);
+}
+
+.dark-mode-country{
+  background-color: hsl(209, 23%, 22%);
+  width: 285px;
+  border-radius: 9px;
+  height: 350px;
+  cursor: pointer;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.02);
+}
+
+.country .flag-container{
+  height: 170px;
+  width: 100%;
+}
+
+.dark-mode-country .flag-container{
+  height: 170px;
+  width: 100%;
+}
+
+.dark-mode-country .flag-container img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9px 9px 0px 0px;
+}
+
+.country .flag-container img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9px 9px 0px 0px;
+}
+
+.country .name {
+  margin-bottom: 10px;
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  font-size: 20px;
+}
+
+.dark-mode-country .dark-mode-name{
+  margin-bottom: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: hsl(209, 23%, 22%);
+  font-size: 20px;
+}
+
+.country .country-information{
+  color: gray;
+  background-color: white;
+  font-size: 14px;
+}
+
+.dark-mode-country .dark-mode-country-information{
+  color: white;
+  background-color: hsl(209, 23%, 22%);
+  font-size: 14px;
+}
+
+.country .paper{
+  padding: 15px;
+  background-color: white;
+}
+
+.dark-mode-country .dark-mode-paper{
+  padding: 15px;
+  background-color: hsl(209, 23%, 22%);
+}
+
+.message{
+  margin-top: 6%;
+  margin-left: 5.5%;
+  margin-bottom: 100%;
+}
+
+.dark-mode-message{
+  margin-top: 6%;
+  margin-left: 5.5%;
+  margin-bottom: 100%;
+  color: white;
+}
+
+.info{
+  color: black;
+}
+
+.loading{
+  text-align: center;
+  animation-name: loading;
+  animation-duration: 4s;
+}
+
+.progress-circle{
+  margin-left: 33%;
+  animation-name: circle;
+  animation-duration: 4s;
+  padding-top: 8%;
+  padding-bottom: 8%;
+}
+
+.content{
+  text-align: center;
+  font-size: 16px;
+  margin-top: 5%;
+}
+
+@keyframes circle{
+  0% {color: green;}
+}
+
+@keyframes loading {
+  0% {color: black;}
+  50% {color: green;}
+}
+
+.loading-dark-mode{
+  text-align: center;
+  color: bisque;
+}
+
+@media (min-width: 640px) {
+  .country {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .progress-circle{
+    margin-left: 45%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+  }
+  .content{
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .inputs {
+    flex-direction: row;
+  }
+  .inputs .search-input {
+    width: auto;
+  }
+  .inputs .search-input input {
+    width: auto;
+  }
+  .inputs .select-region {
+    width: auto;
+  }
+  .country {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .progress-circle{
+    margin-left: 45%;
+  }
+  .content{
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header, .inputs {
+    padding: 20px;
+  }
+  .country {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+  }
+  .progress-circle{
+    margin-left: 45%;
+  }
+  .content{
+    font-size: 24px;
+  }
+}
